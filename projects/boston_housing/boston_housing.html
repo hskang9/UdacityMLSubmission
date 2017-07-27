@@ -11953,23 +11953,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11998,7 +11998,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -12041,7 +12041,7 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -12056,7 +12056,7 @@ Standard deviation of prices: $165,340.28
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -12142,15 +12142,15 @@ Answers to the questions can be justified with this.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Would you expect a home that has an <code>'RM'</code> value(number of rooms) of 6 be worth more or less than a home that has an <code>'RM'</code> value of 7?<ul>
-<li>I would expect less price with 'RM' value of 6 than 7 due to positive correlation.</li>
+<li>I would expect less price with 'RM' value of 6 than 7 due to positive correlation. Also, it is because more room cost more price in common sense.</li>
 </ul>
 </li>
 <li>Would you expect a neighborhood that has an <code>'LSTAT'</code> value(percent of lower class workers) of 15 have home prices be worth more or less than a neighborhood that has an <code>'LSTAT'</code> value of 20?<ul>
-<li>I would expect more price with 'LSTAT' value of 15 than 20 due to negative correlation.</li>
+<li>I would expect more price with 'LSTAT' value of 15 than 20 due to negative correlation. Also, it is because it is high chance to stay in slum if there are a big number of lower class neighbors.</li>
 </ul>
 </li>
 <li>Would you expect a neighborhood that has an <code>'PTRATIO'</code> value(ratio of students to teachers) of 10 have home prices be worth more or less than a neighborhood that has an <code>'PTRATIO'</code> value of 15?<ul>
-<li>I would expect more price with 'PTRATIO' value of 10 than 15 due to negative correlation.</li>
+<li>I would expect more price with 'PTRATIO' value of 10 than 15 due to negative correlation. Also, it is because the less ratio is, the more concentrated education the inhabitants can get.</li>
 </ul>
 </li>
 </ul>
@@ -12187,7 +12187,7 @@ Answers to the questions can be justified with this.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;r2_score&#39;</span>
@@ -12306,6 +12306,7 @@ Answers to the questions can be justified with this.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
+<p>Yes, it is because R2 score is basically calculation of variance between prediction of y and actual value of y.</p>
 
 </div>
 </div>
@@ -12393,9 +12394,7 @@ Answers to the questions can be justified with this.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If the whole dataset is used for training, the model can only be adapted to training data and cause overfitting.
-Because of this, certain part of data is used as test and evaluate if the model is overfitting or underfitting.
-In case of underfitting, it can be identified with fairly low accuracy from the results of test data.</p>
+<p>If the whole dataset is used for training, the model can only be adapted to training data and cause overfitting.</p>
 
 </div>
 </div>
@@ -13499,7 +13498,7 @@ Think about the pros and cons of adding more training points based on if the tra
 </ul>
 </li>
 <li>Would having more training points benefit the model? <ul>
-<li>Nope. It only decreases the score of the model.</li>
+<li>Nope. It only decreases the score of the model. As test score converges, it is mostly stable. Hence putting more data only increases computing time to train the model.</li>
 </ul>
 </li>
 </ul>
@@ -13969,11 +13968,11 @@ SUVORK5CYII=
 <p><strong>Answer: </strong></p>
 <ul>
 <li>When the model is trained with a maximum depth of 1, does the model suffer from high bias or from high variance? <ul>
-<li>It suffers from high bias.</li>
+<li>Since training score and validation score are low, the model is underfitting. Hence, it suffers from high bias.</li>
 </ul>
 </li>
 <li>How about when the model is trained with a maximum depth of 10? What visual cues in the graph justify your conclusions?<ul>
-<li>As the shaded region of complexity curves increase in size, the model with a maximum depth of 10 suffers from high variance.</li>
+<li>As validation score reaches maximum and decreases as maximum depth of the model increases, the model is overfitting to certain feature. Hence, it is suffering from high variance.</li>
 </ul>
 </li>
 </ul>
@@ -14007,7 +14006,7 @@ SUVORK5CYII=
 </ul>
 </li>
 <li>What intuition lead you to this answer?<ul>
-<li>Because it has the smallest shaded region of complexity curves.</li>
+<li>Because it has the highest score of validation score and the score decreases if maximum depth is bigger than itself.</li>
 </ul>
 </li>
 </ul>
@@ -14048,11 +14047,11 @@ SUVORK5CYII=
 <p><strong>Answer: </strong></p>
 <ul>
 <li>What is the grid search technique?<ul>
-<li>Grid search technique is to automatically generate combinations of training parameters without declaring each of them.</li>
+<li>Grid search technique is to automatically generate combinations of training parameters and train each of them without declaring one by one.</li>
 </ul>
 </li>
 <li>How it can be applied to optimize a learning algorithm?<ul>
-<li>Developers do not need to specify each parameter to train the model with this.</li>
+<li>Developers do not need to specify each parameter to train the model with this, and Grid search gives accuracy of results of each parameter so that machine learning engineer can find the optimal training parameter.</li>
 </ul>
 </li>
 </ul>
@@ -14086,19 +14085,20 @@ SUVORK5CYII=
 <ul>
 <li><p>What is the k-fold cross-validation training technique?</p>
 <ul>
-<li>k-fold crosss-validation training technique is to divide data into the number of k, and repeat the procedure below k times:
-<procedure><ul>
+<li><p>k-fold crosss-validation training technique is to divide data into the number of k, and repeat the procedure below k times:
+<procedure></p>
+<ul>
 <li>pick test set from divided data</li>
 <li>train with rest of them</li>
-<li>test with the test set
-Then, give average test results from all trainings.    </li>
+<li>test with the test set</li>
 </ul>
+<p>Then, the model give average test results from all trainings in an amount of k.</p>
 </li>
 </ul>
 </li>
 <li><p>What benefit does this technique provide for grid search when optimizing a model?</p>
 <ul>
-<li>This validation method increases maximum accuracy with decreased minimum training/run time in return.</li>
+<li>This validation method increases maximum accuracy, because it prevents overfitting to certain sets of train/test set. However, cross-validation method comes with decreased minimum training/run time in return.</li>
 </ul>
 </li>
 </ul>
@@ -14331,6 +14331,99 @@ Predicted selling price for Client 3&#39;s home: $931,636.36
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">client_data</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000000</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>RM              3.561
+LSTAT           1.980
+PTRATIO        12.600
+MEDV       105000.000
+dtype: float64 [ 446840.625]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[66]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RM</th>
+      <th>LSTAT</th>
+      <th>PTRATIO</th>
+      <th>MEDV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>197</th>
+      <td>7.853</td>
+      <td>3.81</td>
+      <td>14.7</td>
+      <td>1018500.0</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>8.247</td>
+      <td>3.95</td>
+      <td>17.4</td>
+      <td>1014300.0</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>8.398</td>
+      <td>5.91</td>
+      <td>13.0</td>
+      <td>1024800.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -14339,9 +14432,9 @@ Predicted selling price for Client 3&#39;s home: $931,636.36
 <p><strong>Answer: </strong></p>
 <ul>
 <li>What price would you recommend each client sell his/her home at? <ul>
-<li>Client 1: $300000 ~ $400000
-Client 2: $200000 ~ $300000
-Client 3: $1000000 ~ $1100000</li>
+<li>Client 1: $400000 ~ 430000 compared with data with RM: 5.602, LSTAT: 16.20, PTRATIO: 17.9 MEDV: 407400
+Client 2: $200000 ~ $300000 compared with data with RM: 6.162, LSTAT: 24.10, PTRATIO: 20.2 MEDV: 279300
+Client 3: $1000000 ~ $1030000 compared with data with RM: 8.247, LSTAT: 3.95, PTRATIO: 17.4 MEDV: 1014300</li>
 </ul>
 </li>
 <li>Do these prices seem reasonable given the values for the respective features? <ul>
@@ -14447,9 +14540,11 @@ Range in prices: $69,044.61
 <li>No. In that case, public transportation is not the matter(because it usually doesn't exist).</li>
 </ul>
 </li>
-<li>Is it fair to judge the price of an individual home based on the characteristics of the entire neighborhood?<ul>
+<li><p>Is it fair to judge the price of an individual home based on the characteristics of the entire neighborhood?</p>
+<ul>
 <li>If it is not the invasion of privacy, it is fair.</li>
 </ul>
+<p>In conclusion, I think the model cannot work on nowadays due to inflation and feature which violates personal privacy</p>
 </li>
 </ul>
 
