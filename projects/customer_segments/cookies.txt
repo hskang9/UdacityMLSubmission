@@ -1,0 +1,17 @@
+# HTTP Cookie File downloaded with cookies.txt by Genuinous @genuinous
+# This file can be used by wget, curl, aria2c and other standard compliant tools.
+# Usage Examples:
+#   1) wget -x --load-cookies cookies.txt "https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15313"
+#   2) curl --cookie cookies.txt "https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15313"
+#   3) aria2c --load-cookies cookies.txt "https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15313"
+#
+www.kaggle.com	FALSE	/	TRUE	0	__RequestVerificationToken	1bTfkbxxQPiEA-k9KaNWosCV2vviiqTebK_iMKHEe2YnE3atPYJck0bbb5gU9JGEqu5igu1hiVnvyVtZHBxObZDsgyI1
+www.kaggle.com	FALSE	/	TRUE	1529813548	ai_user	LwFdQ|2017-06-24T04:12:28.833Z
+.kaggle.com	TRUE	/	FALSE	2129377552	intercom-id-koj6gxx6	de9d0b20-c9e8-471b-94ad-1205fac45ab8
+.kaggle.com	TRUE	/	TRUE	0	.ASPXAUTH	499C4D733E10D10BA425CF1C6DF7CB4AB5B1C0A7A58469A331FDB1DCAD3B8D880C43D630067FF95E76452BE11B16F2AEF4D23F315421C9B109B93648DC42E6781CEDB17FC6665C58ABAB2CA463428FC936EBDED0
+.kaggle.com	TRUE	/	FALSE	1563437435	__utma	158690720.1700114393.1498277549.1500051638.1500365411.3
+.kaggle.com	TRUE	/	FALSE	0	__utmc	158690720
+.kaggle.com	TRUE	/	FALSE	1516133435	__utmz	158690720.1500045955.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)
+.kaggle.com	TRUE	/	FALSE	1563599389	_ga	GA1.2.1700114393.1498277549
+.www.kaggle.com	TRUE	/	FALSE	0	ARRAffinity	e40a4d1f7a4f6dc5ffc87ddaed1f32819cbc25b5493dfc3f0a1e6fb90f8b0b81
+.kaggle.com	TRUE	/	FALSE	1503473977	intercom-session-koj6gxx6	b3F3YjZmcnVSNGppckM1eGNFS0k0TXNuRC9ETjM1Tm83L0hpVXF4bmxVb3dxMjRPODlhYXVBR3BsZC9HczdBbC0ta201M0h4d2lKRXJadUtGOFo3U3JjZz09--f88d18c75b0c4958e10c1deca27c7131fa5b7c69
