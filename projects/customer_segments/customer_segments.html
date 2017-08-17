@@ -12387,7 +12387,7 @@ Let's consider the total purchase cost of each product and compare each sample.<
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>'Milk' was the feature that I attempted to predict. the reported prediction score was 0. This feature is necessary because we <em>cannot</em> predict the feature without the feature.
+<p>'Milk' was the feature that I attempted to predict. the reported prediction score was 0.156275395017. This feature is necessary because we <em>cannot</em> predict the feature without the feature.
 Let's try including it.</p>
 
 </div>
@@ -12395,7 +12395,7 @@ Let's try including it.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -20947,10 +20947,10 @@ SZIkSVKHgUmSJEmSOgxMkiRJktRhYJIkSZKkju8Bsv/vJplFHiQAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">pca_results</span><span class="p">[</span><span class="s1">&#39;Explained Variance&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">pca_results</span><span class="p">[</span><span class="s1">&#39;Explained Variance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -20966,11 +20966,11 @@ SZIkSVKHgUmSJEmSOgxMkiRJktRhYJIkSZKkju8Bsv/vJplFHiQAAAAASUVORK5CYII=
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Dimension 1    0.4424
-Dimension 2    0.2766
-Dimension 3    0.1162
-Dimension 4    0.0962
-Dimension 5    0.0458
-Dimension 6    0.0229
+Dimension 2    0.7190
+Dimension 3    0.8352
+Dimension 4    0.9314
+Dimension 5    0.9772
+Dimension 6    1.0001
 Name: Explained Variance, dtype: float64
 </pre>
 </div>
@@ -20986,7 +20986,7 @@ Name: Explained Variance, dtype: float64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-The total variance of the first and second principal component is 0.2766, and the total variance of the first four principal components is 0.0962.</p>
+The total variance of the first and second principal component is 0.7190, and the total variance of the first four principal components is 0.9314.</p>
 <p>The first principal component is made up of large weights in Detergents_Paper, Grocery &amp; Milk. It is negatively correlated with Fresh and Frozen. This pattern might represent spending in household staples products that are purchased together.</p>
 <p>The second principal component is made up of large weights in Fresh, Frozen, Delicatessan. It is also positively correlated with other weights. This pattern might represent spending overall too much. People who are in this component might be rich.</p>
 <p>The third principal component is made up of large weights in Fresh, Delicatessan, and Frozen. Frozen and Delicatessan are negatively correlated with Fresh. This pattern might represent spending in either Fresh foods to eat quickly or buy delicatessen that does not rot in the first place but not both.</p>
