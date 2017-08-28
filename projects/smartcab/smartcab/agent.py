@@ -42,8 +42,6 @@ class LearningAgent(Agent):
         if testing:
             self.epsilon, self.alpha = 0, 0
         else:
-            import math
-            import numpy as np
             self.epsilon = math.cos((self.times)/3) # epsilon function e(n+1) = e(n) - 0.05
         
         return None
@@ -86,12 +84,9 @@ class LearningAgent(Agent):
             Q = self.Q.get((state, action), 0)
             if Q > max_Q:
                 max_Q = Q
-                best_action = action
-            elif Q == max_Q:
-                if random.random() < self.epsilon:
-                    best_action = action
+                
 
-        return max_Q, action
+        return max_Q
 
 
     def createQ(self, state):
@@ -128,13 +123,17 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         if self.learning == False:
-            action = self.env.valid_actions[random.randint(0,3)]
+            action = random.choice(self.env.valid_actions)
         
         else: 
             if random.random() < self.epsilon:
-                action = self.env.valid_actions[random.randint(0,3)]
+                action = random.choice(self.env.valid_actions)
             else:
-                maxQ, action = self.get_maxQ(state)
+                maxQ = self.get_maxQ(state)
+                actions = [action for action, Q in self.Q.get((state)).items() if Q == maxQ]
+                if len(actions) > 1:
+                    if random.random() < self.epsilon:
+                        action = random.choice(actions)
             
         # When not learning, choose a random action
         # When learning, choose a random action with 'epsilon' probability
@@ -190,7 +189,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning=True, epsilon=0.99)
+    agent = env.create_agent(LearningAgent, learning=True)
     
     ##############
     # Follow the driving agent
@@ -212,7 +211,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(tolerance=0.05, n_test=100)
+    sim.run(tolerance=0.05, n_test=20)
     
 
 
