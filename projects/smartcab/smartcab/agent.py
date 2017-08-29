@@ -32,7 +32,7 @@ class LearningAgent(Agent):
 
         # Select the destination as the new location to route to
         self.planner.route_to(destination)
-        
+        self.times += 1
         ########### 
         ## TO DO ##
         ###########
@@ -42,8 +42,9 @@ class LearningAgent(Agent):
         if testing:
             self.epsilon, self.alpha = 0, 0
         else:
-            self.epsilon = math.cos((self.times)/3) # epsilon function e(n+1) = e(n) - 0.05
-        
+            self.epsilon = math.cos(self.times/3)/2 + 0.5
+            
+            
         return None
 
     def build_state(self):
@@ -66,7 +67,7 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
         
         # Set 'state' as a tuple of relevant data for the agent        
-        state = (inputs['light'], waypoint)
+        state = (inputs['light'], inputs['oncoming'], inputs['left'], inputs['right'], waypoint)
 
         return state
 
@@ -79,14 +80,10 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-        max_Q = -999999
-        for action in Environment.valid_actions:
-            Q = self.Q.get((state, action), 0)
-            if Q > max_Q:
-                max_Q = Q
+        maxQ = max(self.Q[state].values())
                 
 
-        return max_Q
+        return maxQ
 
 
     def createQ(self, state):
@@ -98,11 +95,11 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-        
-        if state not in self.Q.keys():
-            self.Q[state] = {}
-            for action in Environment.valid_actions:
-                self.Q[state][action] = 0.0
+        if self.learning == True:
+            if state not in self.Q.keys():
+                self.Q[state] = {}
+                for action in Environment.valid_actions:
+                    self.Q[state][action] = 0.0
             
             
         
@@ -131,9 +128,6 @@ class LearningAgent(Agent):
             else:
                 maxQ = self.get_maxQ(state)
                 actions = [action for action, Q in self.Q.get((state)).items() if Q == maxQ]
-                if len(actions) > 1:
-                    if random.random() < self.epsilon:
-                        action = random.choice(actions)
             
         # When not learning, choose a random action
         # When learning, choose a random action with 'epsilon' probability
@@ -152,7 +146,8 @@ class LearningAgent(Agent):
         ###########
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
-        self.Q[state][action] = self.alpha * reward + (1 - self.alpha) * self.Q[state][action]
+        if self.learning == True:
+            self.Q[state][action] = self.alpha * reward + (1 - self.alpha) * self.Q[state][action]
         return 
 
 
@@ -166,7 +161,6 @@ class LearningAgent(Agent):
         action = self.choose_action(state)  # Choose an action
         reward = self.env.act(self, action) # Receive a reward
         self.learn(state, action, reward)   # Q-learn
-        self.times += 1
         return
 
 
@@ -211,7 +205,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(tolerance=0.05, n_test=20)
+    sim.run(tolerance=0.05, n_test=200)
     
 
 
