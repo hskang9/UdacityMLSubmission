@@ -42,7 +42,7 @@ class LearningAgent(Agent):
         if testing:
             self.epsilon, self.alpha = 0, 0
         else:
-            self.epsilon = math.cos(self.times/3)/2 + 0.5
+            self.epsilon = 1 - 0.0005*self.times
             
             
         return None
@@ -128,6 +128,7 @@ class LearningAgent(Agent):
             else:
                 maxQ = self.get_maxQ(state)
                 actions = [action for action, Q in self.Q.get((state)).items() if Q == maxQ]
+                action = random.choice(actions)
             
         # When not learning, choose a random action
         # When learning, choose a random action with 'epsilon' probability
@@ -147,7 +148,7 @@ class LearningAgent(Agent):
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
         if self.learning == True:
-            self.Q[state][action] = self.alpha * reward + (1 - self.alpha) * self.Q[state][action]
+            self.Q[state][action] += self.alpha * (reward - self.Q[state][action])
         return 
 
 
