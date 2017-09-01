@@ -17345,20 +17345,20 @@ QmCC
 <p>Before answering question 3 and 4, here is the state dictionary.</p>
 
 <pre><code> {
-     ('green', None, 'right', 'forward', 'left'): {
+     ('right', 'green', True, 'right'): {
                                 'forward' : 0.0,
                                 'None' : 0.0,
                                 'right' : 0.0,
                                 'left' : 0.0
                            },
-     ('green', 'left', None, 'left', 'right'): {
+     ('left', 'green', False, 'right'): {
                              'forward': 0.0,
                              'None' : 0.0,
                              'right': 0.0,
                              'left': 0.0
                          },
      ...
-     ('red', None, 'left', 'forward', 'forward'): { 
+     ('left', 'red', False, 'right'): { 
                          'forward': 0.0,
                          'None': 0.0,
                          'right': 0.0,
@@ -17367,27 +17367,27 @@ QmCC
  }</code></pre>
 
 <pre><code>3. 
-    ('red', 'left', 'forward', 'forward', 'forward')
+    ('forward', 'green', True, None)
 
-     -- forward : -38.64
+     -- forward : 2.18
 
-     -- None : 1.59
+     -- None : -5.21
 
-     -- right : -14.64
+     -- right : 1.02
 
-     -- left : -37.44
+     -- left : 0.91
 
-    **The policy(None) has the highest value and it is correct for the given state(None on red light).
+    **The policy(right) has the highest value and it is correct for the given state(None on red light).
 4.
-    ('red', 'left', 'right', 'forward', 'right')
+    ('right', 'red', False, None)
 
-     -- forward : -20.32
+     -- forward : -10.64
 
-     -- None : 0.00
+     -- None : 0.64
 
-     -- right : 2.40
+     -- right : 1.92
 
-     -- left : 0.00
+     -- left : -9.83
 
      **The reward on right is higher than None.**</code></pre>
 
