@@ -17497,18 +17497,18 @@ JEmSJA3J/wGqOPW+J8DMPgAAAABJRU5ErkJggg==
 
     **The policy(forward) has the highest value and it is correct for the given state(None on red light).
 4.
-    ('right', 'red', 'left', 'right')
+    ('forward', 'red', 'right', 'forward')
 
-     -- forward : -33.52
+     -- forward : -10.07
 
-     -- None : 0.46
+     -- None : 2.36
 
-     -- right : 1.89
+     -- right : 0.74
 
-     -- left : -37.60
+     -- left : -9.51
 
 
-     **The reward on right is higher than None.**</code></pre>
+     **Although the reward on 'right' is also a valid move, there is a huge gap between None.**</code></pre>
 
 </div>
 </div>
@@ -17541,7 +17541,7 @@ JEmSJA3J/wGqOPW+J8DMPgAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 
-<pre><code>One characteristic that has to do with the Smartcab itself was 'waypoint' in that it determines the car's future path. The other was inputs, which are the features of the environment affecting the car's next move. In my opinion, I think the future rewards will not work for this project, because the destination is chosen arbitarily, and propagating future positive rewards to current state will only give bias to the model in previous cases.</code></pre>
+<pre><code>One characteristic that has to do with the Smartcab itself was 'waypoint' in that it determines the car's future path. The other was inputs, which are the features of the environment limited to car's front, left, and right for one block, affecting the car's next move. In my opinion, I think the future rewards will not work for this project, because the destination is chosen arbitarily, and propagating future positive rewards to current state will only give bias to the model in previous cases.</code></pre>
 
 </div>
 </div>
