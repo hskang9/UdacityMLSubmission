@@ -1,52 +1,126 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
-Joe Udacity  
-December 31st, 2050
+Hyungsuk Kang  
+September 27st, 2017
 
-## Proposal
-_(approx. 2-3 pages)_
+## Proposal for Study
+_(approx. 2-3 pages)_ 
 
 ### Domain Background
 _(approx. 1-2 paragraphs)_
 
-In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
+Banks play a crucial role in market economies. They decide who can get finance and on what terms and can make or break investment decisions. For markets and society to function, individuals and companies need access to credit[^1]:wikipedia. To prove the credit, FICO score was introduced in 1989 by FICO, originally Fair, Isaac and Company, which is a is a data analytics company based in San Jose, California focused on credit scoring services[^2]:wikipedia. Nowadays, Credit Karma is produces free service to look up one's creditworthiness based on their scoring model called 'VantageScore'[3]:investopedia.  
+
+However, FICO score does not actually prove that one has no credit. It creates a score by looking at your file from the three major credit reporting bureaus – TransUnion, Equifax and Experian. What's worse, 'VantageScore' model shows rather boasted score and waits for their customers responding to their tailored ads after taking customers' personal information and financial condition. In conclusion, there is no suitable financial model which can determine a person will have financial difficulty in upcoming years and therefore cannot get the loan. 
+
+The good service have to provide accurate score for customers to support their financial decision, predicting their future finance. Knowing future is impossible, but it can be approximated with the help of machine learning generated from past cases. In this project, I will compare the performance between machine learning and deep learning to predict whether the borrower will face serious financial problem in 2 years, and the optimal model will help borrowers to make the best financial decision with iOS11 app with CoreML framework. The application uses ["Give Me Some Credit"](https://www.kaggle.com/c/GiveMeSomeCredit) dataset to determine the condition.
+
 
 ### Problem Statement
 _(approx. 1 paragraph)_
 
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+The goal is to create an iOS11 app that will predict the borrower will face a financial difficulty or not; The tasks are involved are the following:
+
+    1. Download and preprocess the "Give Me Some Credit" data.
+    2. Train a classifier that can determine if the borrrower is in financial crisis.
+    3. Make the model run on iPhone.
+
 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+The "Give Me Some Credit" dataset has the data of 250,000 borrowers with 10 features:
+    
+### RevolvingUtilizationOfUnsecuredLines 
+   [Total balance on credit cards and personal lines of credit except real estate and no installment debt like car loans divided by the sum of credit limits]
+### age 
+   [Age of borrower in years]
+### NumberOfTime30-59DaysPastDueNotWorse 
+   [Number of times borrower has been 30-59 days past due but no worse in the last 2 years.]	
+### DebtRatio	
+   [Monthly debt payments, alimony,living costs divided by monthy gross income]
+### MonthlyIncome	
+   [Monthly income]
+### NumberOfOpenCreditLinesAndLoans 
+   [Number of Open loans (installment like car loan or mortgage) and Lines of credit (e.g. credit cards)]
+### NumberOfTimes90DaysLate 
+   [Number of times borrower has been 90 days or more past due.]
+###  NumberRealEstateLoansOrLines	
+   [Number of mortgage and real estate loans including home equity lines of credit]
+###  NumberOfTime60-89DaysPastDueNotWorse
+   [Number of times borrower has been 60-89 days past due but no worse in the last 2 years.]
+###  NumberOfDependents
+   [Number of dependents in family excluding themselves (spouse, children etc.)]
+    
+---
+
+## And 1 label:
+    
+### SeriousDlqin2yrs
+   [Serious financial distress in the next two years]
+   
+   
 
 ### Solution Statement
 _(approx. 1 paragraph)_
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+The solution for this problem would be to fit to machine learning model(LogisticRegression, DecisionTree, SVM from sklearn) or deep neural networks(Keras). The feature engineering, such as PCA or ICA will be used to get accurate results from the model.
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
 
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+The benchmark model for this project will be the random classifier. This is same as shooting an arrow blindfolded, which is why the model is such a great baseline model. The model's prediction from the test data will be compared to financial crisis classifier with the evaluation metrics below.
+
+
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
 
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+The model will be evaluated using both F1 score and area under the receiver operating characteristic curve(AUROC). Here are the explanation for each of them.
+
+F1 score is the harmonic mean of precision and recall. Precision is the ratio of true positives to all positive predictions, and it is used to evaluate the model's suitability. Recall is the ratio of true positives to all positive examples, and it is used to evaluate the precision of the model.
+
+![F1score.png](attachment:F1%20score.png)
+
+
+AUROC curve is the trade-off for between the true positive rate and the false positive rate as the classifier's threshold is varied. The metric is only used for binary classification. The advantage of AUROC curve to F1 score is that it is not sensitive to imbalanced classes.
+
+
+
+
 
 ### Project Design
 _(approx. 1 page)_
+The workflow of the project would be:
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+### Setup and Data Preprocessing
 
------------
+- Import all necessary packages and modules to jupyter notebook
+- Load CSV file into Python
+- Split features and labels
+- Split the data with the ratio of 8 to 2 (8 for training set, 2 for testing set)
 
-**Before submitting your proposal, ask yourself. . .**
 
-- Does the proposal you have written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Solution Statement** and **Project Design**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your proposal?
-- Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
+### Data Exploration and Feature Engineering
+
+- Analyze correlation for each feature and label with heatmap
+- utilize sklearn.pca to combine features into 4 components
+- Analyze correlation again
+
+### Training classifier
+
+First of all, random classifier is trained.
+Training divides into 2 part; machine learning methods and deep learning methods.
+
+1. Machine learning method
+
+- Utilize sklearn.SVC.svm to train predictive model.
+- Utilize sklearn.tree.DecstionTree to train predictive model.
+- Utilize GridSearchCV to optimize training method and parameters.
+- Utilize sklearn.linear_model.LogisticRegression 
+
+
+2. Deep learning method
+
+- Use Keras and Tensorflow as backend to construct a neural net classifier.
+- Use Randomclass from sklearn to create baseline which only guesses randomly.
