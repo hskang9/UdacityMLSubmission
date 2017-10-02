@@ -48,15 +48,15 @@ def distribution(data, transformed = False):
     fig.show()
 
 
-def evaluate(results, accuracy, f1):
+def evaluate(results, f1, auroc):
     """
     Visualization code to display results of various learners.
     
     inputs:
       - learners: a list of supervised learners
       - stats: a list of dictionaries of the statistic results from 'train_predict()'
-      - accuracy: The score for the naive predictor
       - f1: The score for the naive predictor
+      - auroc: The score for the naive predictor
     """
   
     # Create figure
@@ -64,7 +64,7 @@ def evaluate(results, accuracy, f1):
 
     # Constants
     bar_width = 0.3
-    colors = ['#A00000','#00A0A0','#00A000']
+    colors = ['#A00000','#00A0A0','#00A000', '#0000A0']
     
     # Super loop to plot four panels of data
     for k, learner in enumerate(results.keys()):
